@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="menu_alifzerocms_root"
+            name="Alif Zero CMS"
+            web_icon="alifzerocms,static/description/cms.jpg"
+            groups="group_cms_user"
+            sequence="5"/>
+
+
+    <menuitem
+            id="menu_alifzerocms_students_root"
+            name="Students"
+            groups="group_cms_user"
+            parent="menu_alifzerocms_root"
+            sequence="10"/>
+
+    <menuitem
+            id="menu_alifzerocms_faculty_root"
+            name="Faculty"
+            groups="group_cms_user"
+            parent="menu_alifzerocms_root"
+            sequence="15"/>
+
+
+
+    <menuitem
+            id="menu_alifzerocms_organization"
+            name="Organization"
+            groups="group_cms_user"
+            parent="menu_alifzerocms_root"
+            sequence="30"/>
+
+            <menuitem
+                    id="menu_alifzerocms_organization_structure"
+                    name="Organization Structure"
+                    parent="menu_alifzerocms_organization"
+                    sequence="10"/>
+
+            <menuitem
+                    id="menu_alifzerocms_academic_structure"
+                    name="Academic Structure"
+                    parent="menu_alifzerocms_organization"
+                    sequence="20"/>
+
+            <menuitem
+                    id="menu_alifzerocms_organization_infrastructure"
+                    name="Organization Infra-Structure"
+                    parent="menu_alifzerocms_organization"
+                    sequence="30"/>
+
+    <menuitem
+            id="menu_alifzerocms_academic_setup"
+            name="Academic Setup"
+            groups="group_cms_user"
+            parent="menu_alifzerocms_root"
+            sequence="40"/>
+
+    <menuitem
+            id="menu_alifzerocms_report"
+            name="Reports"
+            parent="menu_alifzerocms_root"
+            groups="group_cms_user"
+            sequence="80"/>
+
+    <menuitem
+            id="menu_alifzerocms_configuration"
+            parent="menu_alifzerocms_root"
+            name="Configuration"
+            groups="group_cms_manager"
+            sequence="100"/>
+
+
+    			<menuitem
+    					id="menu_alifzerocms_settings"
+                      	name="Settings"
+                      	parent="menu_alifzerocms_configuration"
+                      	action="action_config_settings"
+                      	groups="base.group_system"
+                      	sequence="1"/>
+
+            <menuitem
+                    id="menu_alifzerocms_config_general"
+                    name="General"
+                    groups="group_cms_manager,group_cms_user"
+                    parent="menu_alifzerocms_configuration"
+                    sequence="20"/>
+
+
+
+
+
+</odoo>

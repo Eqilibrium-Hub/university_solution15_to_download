@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="alifzerocms_online_frontend_style" name="alifzerocms" inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+			<link rel="stylesheet" href="/alifzerocms/static/src/css/style.css"/>
+        </xpath>
+    </template>
+
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/alifzerocms/static/src/js/views.js"></script>
+        </xpath>
+    </template>
+
+</odoo>
+
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+	
+		<!-- Student Application Report -->
+		<report
+			id="action_report_student_preference"
+			string="Student Preference Report"
+			model="student.preference.wizard"
+			report_type="qweb-pdf"
+			name="alifzerocms_admission.student_preference_report"
+			file="alifzerocms_admission.student_preference_report"
+			menu="False"
+		/>
+
+		<!-- Student Merit List Report -->
+		<report
+			id="action_report_student_merit_list"
+			string="Merit List"
+			model="alifzerocms.merit.register"
+			report_type="qweb-html"
+			name="alifzerocms_admission.student_merit_list_report"
+			file="alifzerocms_admission.student_merit_list_report"
+			menu="True"
+		/>
+
+		<!-- Student Report for interview Call-->
+		<report
+			id="action_report_student_merit_interview"
+			string="Merit Interview List"
+			model="alifzerocms.merit.register"
+			report_type="qweb-html"
+			name="alifzerocms_admission.student_merit_interview_report"
+			file="alifzerocms_admission.student_merit_interview_report"
+			menu="True"
+		/>
+
+		<!-- Student Final Merit List Report -->
+		<report
+			id="action_report_student_final_merit_list"
+			string="Student Final Merit List"
+			model="student.final.merit.list.wizard"
+			report_type="qweb-html"
+			name="alifzerocms_admission.student_final_merit_list_report"
+			file="alifzerocms_admission.student_final_merit_list_report"
+			menu="False"
+		/>
+
+
+
+		<!-- Non SubSidized Form Report -->
+		<report
+			id="action_report_non_subsidized_form"
+			string="Non SubSidized Form"
+			model="non.subsidized.form.wizard"
+			report_type="qweb-html"
+			name="alifzerocms_admission.non_subsidized_form_report"
+			file="alifzerocms_admission.non_subsidized_form_report"
+			menu="False"
+		/>
+
+
+
+	</data>
+</odoo>

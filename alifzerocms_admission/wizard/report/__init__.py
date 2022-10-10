@@ -1,0 +1,4 @@
+from . import alifzerocms_preference_wizard
+from . import alifzerocms_final_merit_list_wizard
+from . import alifzerocms_merit_interview_wizard
+from . import alifzerocms_meritlist_report_wizard

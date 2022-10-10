@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+        
+        <record id="view_public_holidays_tree" model="ir.ui.view">
+            <field name="name">alifzerocms.holidays.public.tree</field>
+            <field name="model">alifzerocms.holidays.public</field>
+            <field name="arch" type="xml">
+                <tree string="Public Holidays">
+                    <field name="name"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+e
+        
+    </data>
+</odoo>

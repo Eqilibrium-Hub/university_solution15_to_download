@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="alifzerocms_admission_portal.report_admission">
+		<t t-call="web.html_container">
+			<t t-foreach="application_ids" t-as="o">
+                <t t-call="alifzerocms_admission_portal.report_admission_final_document"/>
+            </t>
+		 </t>
+	</template>
+
+    <template id="alifzerocms_admission_portal.report_admission_final_document">
+        <t t-call="web.basic_layout">
+			<t t-if="not company">
+				<t t-if="company_id">
+					<t t-set="company" t-value="company_id"/>
+				</t>
+				<t t-elif="o and 'company_id' in o">
+					<t t-set="company" t-value="o.company_id.sudo()"/>
+				</t>
+				<t t-else="else">
+					<t t-set="company" t-value="res_company"/>
+				</t>
+			</t>
+			<style>
+				#invoice-report {
+				  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				  border-collapse: collapse;
+				  width: 98%;
+				  margin: 1.5%;
+				}
+				#invoice-report td, #invoice-report th {
+				  border: 1px solid #ddd;
+				  padding: 2px;
+				}
+				#invoice-report th {
+				  text-align: left;
+				  width:60%;
+				  font-weight:normal;
+				}
+				#invoice-report td {
+				  text-align: right;
+				  width:40%;
+				}
+			</style>
+
+			<div class="row"> <!--   style="margin:0px;padding:10px;"  background-color: #f5f5f5; -->
+				<div class="col-md-6">
+<!--					<img alt="Contact" t-att-src="image_data_uri(company.logo)" t-if="company.logo" style="width:100px; height:100px;"/>-->
+				</div>
+				<div class="col-md-6">
+					<center><h4>Directorate of Admissions</h4>
+						<b><span t-esc="company.name"/> </b> <br/>
+						<b> Online Registration for Admission</b>
+						<br/>for admission into  <span t-esc="o.register_id.name"/>
+				   </center>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-5 col-sm-6">
+				  <div style="width:100%;margin: auto;padding-top:30px">
+					<strong>Name:</strong>
+					<span t-esc="o.name"/>
+					<br/>
+					<strong>Application Number:</strong>
+					<span t-esc="o.application_no"/>
+					<br/>
+					<strong>Application Date:</strong>
+					<span t-esc="o.application_date"/>
+					<br/>
+					<strong>Application Status:</strong>
+					<span t-esc="o.state"/>
+				  </div>
+				</div>
+				<div class="col-md-5 col-sm-6">
+					<img alt="Contact" class="rounded-circle mt-1 o_portal_contact_img"
+						 style="width:100px;height:80px;float:right;" t-att-src="image_data_uri(o.image)" t-if="o.image"/>
+					<img alt="Contact" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" t-else=""/>
+				</div>
+			</div>
+
+			<div class="small mb-1">
+			  <strong class="text-muted">
+				<h3>Personal Information</h3>
+			  </strong>
+			</div>
+
+			<table class="table table-condensed" width="100%">
+			  <tbody>
+				<tr>
+					<th class="text-left">Name: </th>
+					<td class="text-left"><span t-field="o.name"/></td>
+					<th class="text-left">Father Name: </th>
+					<td class="text-left"><span t-field="o.father_name"/></td>
+					<th class="text-left">Email: </th>
+					<td class="text-left"><span t-field="o.email"/></td>
+				</tr>
+				<tr style="font-size:14px;">
+					<th class="text-left">CNIC: </th>
+					<td class="text-left"><span t-field="o.cnic"/></td>
+					<th class="text-left">Date of Birth: </th>
+					<td class="text-left"><span t-field="o.date_of_birth"/></td>
+					<th class="text-left">Mobile: </th>
+					<td class="text-left"><span t-field="o.mobile"/></td>
+				</tr>
+				<tr style="font-size:14px;">
+					<th class="text-left">Gender: </th>
+					<td class="text-left"><span t-field="o.gender"/></td>
+					<th class="text-left">Nationality: </th>
+					<td class="text-left"><span t-field="o.nationality"/></td>
+					<th class="text-left">Domicile: </th>
+					<td class="text-left"><span t-field="o.domicile"/></td>
+				</tr>
+				<tr style="font-size:14px;">
+					<th class="text-left">Blood Group: </th>
+					<td class="text-left"><span t-field="o.blood_group"/></td>
+					<th class="text-left">Religion: </th>
+					<td class="text-left"><span t-field="o.religion_id.name"/></td>
+					<th class="text-left">Hafiz Quran: </th>
+					<td class="text-left">
+						<t t-if="o.is_hafiz"><span>Yes</span></t>
+						<t t-if="not o.is_hafiz"><span>No</span></t></td>
+				</tr>
+
+			  </tbody>
+			</table>
+
+			<div class="small mb-1">
+			  <strong class="text-muted"><h3>Address Details</h3></strong>
+			</div>
+			<div class=" row mt-4">
+				<table class="table table-condensed" width="100%">
+				  <tbody>
+					<tr style="font-size:20px;"><th class="text-left" colspan="4" >Permanent Address</th></tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">Street1: </th>
+					  <td class="text-left" colspan="3"><span t-field="o.per_street"/></td>
+					</tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">Street2: </th>
+					  <td class="text-left" colspan="3"><span t-field="o.per_street2"/></td>
+					</tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">City: </th>
+					  <td class="text-left"><span t-field="o.per_city"/></td>
+					  <th class="text-left">Country: </th>
+					  <td class="text-left"><span t-field="o.per_country_id.name"/></td>
+					</tr>
+
+					<tr style="font-size:20px;"><th class="text-left" colspan="4">Present Address</th></tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">Street1: </th>
+					  <td class="text-left" colspan="3"><span t-field="o.street"/></td>
+					</tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">Street2: </th>
+					  <td class="text-left" colspan="3"><span t-field="o.street2"/></td>
+					</tr>
+					<tr style="font-size:14px;">
+					  <th class="text-left">City: </th>
+					  <td class="text-left"><span t-field="o.city"/></td>
+					  <th class="text-left">Country: </th>
+					  <td class="text-left"><span t-field="o.country_id.name"/></td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+
+			  <div class="small mb-1">
+			      <strong class="text-muted">
+				    <h3>Educational Information</h3>
+			      </strong>
+			  </div>
+
+			  <div class=" row mt-4">
+				<table class="table table-condensed" width="100%">
+				  <tbody>
+						<t t-foreach="matric_education" t-as="matric">
+							<tr style="font-size:14px;">
+								<th class="text-left">Degree Title</th>
+								<th class="text-left">Passing Year </th>
+								<th class="text-left">Board/University </th>
+								<th class="text-left">Subjects</th>
+								<th class="text-left">Total Marks</th>
+								<th class="text-left">Obtained Marks </th>
+							</tr>
+							<tr style="font-size:13px;">
+								<td class="text-left"><span t-field="matric.degree"/></td>
+	   							<td class="text-left"><span t-field="matric.year"/></td>
+								<td class="text-left"><span t-field="matric.board"/></td>
+								<td class="text-left"><span t-field="matric.subjects"/></td>
+								<td class="text-left"><span t-field="matric.total_marks"/></td>
+								<td class="text-left"><span t-field="matric.obtained_marks"/></td>
+							</tr>
+						</t>
+						<t t-foreach="inter_education" t-as="inter">
+							<tr style="font-size:14px;">
+								<td class="text-left"><span t-field="inter.degree"/></td>
+								 <td class="text-left"><span t-field="inter.year"/></td>
+								<td class="text-left"><span t-field="inter.board"/></td>
+								<td class="text-left">
+									<t t-if="inter.degree=='A-Level'"><span t-field="inter.degree"/></t>
+									<t t-if="not inter.degree =='A-Level'"><span t-field="inter.subjects"/></t>
+								</td>
+								<td class="text-left"><span t-field="inter.total_marks"/></td>
+								<td class="text-left"><span t-field="inter.obtained_marks"/></td>
+							</tr>
+						</t>
+				  </tbody>
+				</table>
+			  </div>
+
+			<div class="small mb-1">
+			  <strong class="text-muted"><h3>Program Information</h3></strong>
+			</div>
+			<div class=" row mt-4">
+				<table class="table table-condensed" width="100%">
+				  <tbody>
+						<tr style="font-size:20px;" >
+							<th class="text-left" colspan="3" >Program Apply For: </th>
+							<td class="text-left" colspan="9"><span t-field="o.register_id.name"/>
+							</td>
+						</tr>
+						<t t-foreach="program_preferences_ordered" t-as="program">
+								<!-- <th class="text-left">Preference </th> -->
+								<td class="text-left">
+									<span t-field="program.program_id.code"/>
+								</td>
+						</t>
+				  </tbody>
+				</table>
+			  </div>
+
+			<div class="small mb-1">
+			  <strong class="text-muted"><h3>Matric Scanned Copy</h3></strong>
+			</div>
+			<div class="form-row" t-if="application_documents.matric_scaned_copy">
+				<img t-att-src="'data:image/png;base64,%s' % to_text(application_documents.matric_scaned_copy)" style="width:100%"/>
+		    </div>
+
+
+			<div class="small mb-1">
+			  <strong class="text-muted"><h3>Intermediate Scanned Copy</h3></strong>
+			</div>
+
+		    <div class="form-row" t-if="application_documents.inter_scaned_copy">
+				<img t-att-src="'data:image/png;base64,%s' % to_text(application_documents.inter_scaned_copy)" style="width:100%"/>
+		    </div>
+
+			<div class="small mb-1">
+			  <strong class="text-muted"><h3>Domicile Scanned Copy</h3></strong>
+			</div>
+		    <div class="form-row" t-if="application_documents.domicile_scaned_copy">
+				<img t-att-src="'data:image/png;base64,%s' % to_text(application_documents.domicile_scaned_copy)" style="width:100%"/>
+		    </div>
+
+
+<!--				<t class="list-group-item fle-xgrow-1">-->
+<!--					<div style="box-shadow: 0px 3px 10px 0px rgb(0,0,0,0.3); padding:0px 25px 25px">-->
+
+
+<!--					  <div class=" row mt-4">-->
+<!--						<style>table th { background-color:#d4e3e5;}-->
+<!--											 tr:nth-child(even) {background-color: #d4e3e5;}-->
+<!--											 tr:nth-child(odd) {background-color: #d4e3e5;}-->
+<!--									</style>-->
+<!--					  </div>-->
+
+
+
+<!--					</div>-->
+<!--				  </t>-->
+		</t>
+    </template>
+</odoo>

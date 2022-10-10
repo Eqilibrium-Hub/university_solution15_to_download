@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <menuitem
+                id="alifzerocms_admission.menu_alifzerocms_admission_confirm_fee"
+                name="Admission Confirm Fee"
+                groups="alifzerocms.group_cms_manager,alifzerocms_admission.group_admission_manager"
+                sequence="30"/>
+
+        <menuitem
+                id="alifzerocms_admission.menu_candidate_verification"
+                name="Candidate Verification"
+                groups="alifzerocms.group_cms_manager,alifzerocms_admission.group_admission_manager"
+                sequence="100"/>
+
+        <menuitem
+                id="alifzerocms_admission.menu_education_reject_reason"
+                name="Reject Reason"
+                groups="alifzerocms.group_cms_manager,alifzerocms_admission.group_admission_manager"
+                sequence="20"/>
+
+        <menuitem
+                id="alifzerocms_admission.menu_application_hafiz_quran_result"
+                name="Result Hafiz Quran"
+                groups="alifzerocms.group_cms_manager,alifzerocms_admission.group_admission_manager"
+                sequence="30"/>
+
+    </data>
+</odoo>

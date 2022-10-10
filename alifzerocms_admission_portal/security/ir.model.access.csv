@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_alifzerocms_aggregate_config_user,alifzerocms.aggregate.config,model_alifzerocms_aggregate_config,alifzerocms.group_cms_user,1,1,1,0
+access_alifzerocms_aggregate_config_manager,alifzerocms.aggregate.config,model_alifzerocms_aggregate_config,alifzerocms.group_cms_manager,1,1,1,0
+
+access_alifzerocms_application_steps_user,alifzerocms.application.steps,model_alifzerocms_application_steps,alifzerocms.group_cms_user,1,1,1,0
+access_alifzerocms_application_steps_manager,alifzerocms.application.steps,model_alifzerocms_application_steps,alifzerocms.group_cms_manager,1,1,1,0

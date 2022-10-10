@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="addmission_registration" name="Admission page">
+        <t t-call="website.layout">
+            <style>
+                .wrap-1{
+                max-width: 99.9%;
+                }
+                .smart-steps .wizard > .steps a {
+                position: relative;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 11px;
+                font-weight: bold;
+                }
+                .stp-six .wizard > .steps > ul > li {
+                width: 15%;
+                }
+                element.style {
+                }
+                .steps-theme-blue .wizard > .steps .done a, .steps-theme-blue .wizard > .steps .done a:hover,
+                .steps-theme-blue .wizard > .steps .done a:active, .steps-theme-blue .wizard > .steps .done:before,
+                .steps-theme-blue .wizard > .steps .done .number {
+                background: #53CFFF;
+                color: #fff;
+                }
+                .smart-steps .wizard > .steps a, .smart-steps .wizard > .steps a:hover, .smart-steps .wizard > .steps
+                a:active {
+                height: 54px;
+                line-height: 14px;
+                padding-left: 2em;
+                padding-top: 0.8em;
+                padding-right: 2em;
+                }
+                .capital_letters{
+                text-transform: uppercase;
+                }
+
+
+            </style>
+            <!--            <body class="woodbg">-->
+
+            <body style="background:#E6CCA6 url(/alifzerocms_admission_portal/static/images/wood.png) repeat fixed;">
+                <div class="smart-wrap">
+                    <div class="smart-forms smart-container wrap-1">
+                         <a id="close-eligibility-criteria"  style="font-size:14px bold; color:orange; padding:38px;"
+               onclick="document.getElementById('eligibility-criteria').style.display='block';">
+               Click to View Eligibility Criteria
+            </a>
+                        <div class="form-body theme-blue smart-steps steps-progress steps-theme-blue stp-six">
+                            <div t-if="not students.date_of_birth" id="eligibility-criteria" class="w3-modal cms-modal" style="display:block">
+                                <!-- Modal content -->
+                                <div class="w3-modal-content cms-modal-content">
+                                    <div class="modal-header cms-modal-header">
+                                        <h2>Eligibility Criteria</h2>
+                                        <span class="close" id="close-eligibility-criteria"
+                                              onclick="document.getElementById('eligibility-criteria').style.display='none';">
+                                            X
+                                        </span>
+                                    </div>
+                                    <div class="modal-body cms-modal-body">
+                                        <div class="frm-row">
+                                            <div class="section colm colm12">
+                                                <img style="width:100%; height:100%"
+                                                     t-att-src="image_data_uri(register.eligibility_criteria_image)"
+                                                     t-if="register.eligibility_criteria_image"
+                                                     alt="Eligibility Criteria"/>
+                                                <img style="width:100%; height:100%"
+                                                     src="/alifzerocms_admission_portal/static/images/eligiblity_criteria1.png"
+                                                     t-if="not register.eligibility_criteria_image"
+                                                     alt="Eligibility Criteria"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div t-if="students.date_of_birth" id="eligibility-criteria" class="w3-modal cms-modal" style="display:none">
+                                <!-- Modal content -->
+                                <div class="w3-modal-content cms-modal-content">
+                                    <div class="modal-header cms-modal-header">
+                                        <h2>Eligibility Criteria</h2>
+                                        <span class="close" id="close-eligibility-criteria"
+                                              onclick="document.getElementById('eligibility-criteria').style.display='none';">
+                                            X
+                                        </span>
+                                    </div>
+                                    <div class="modal-body cms-modal-body">
+                                        <div class="frm-row">
+                                            <div class="section colm colm12">
+                                                <img style="width:100%; height:100%"
+                                                     t-att-src="image_data_uri(register.eligibility_criteria_image)"
+                                                     t-if="register.eligibility_criteria_image"
+                                                     alt="Eligibility Criteria"/>
+                                                <img style="width:100%; height:100%"
+                                                     src="/alifzerocms_admission_portal/static/images/eligiblity_criteria1.png"
+                                                     t-if="not register.eligibility_criteria_image"
+                                                     alt="Eligibility Criteria"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-foreach="students" t-as="student">
+                                <div id="profile_photo_loading">
+                                    <div>
+                                        <img src="/alifzerocms_admission_portal/static/images/loading.gif"/>
+                                    </div>
+                                </div>
+                                <form method="post" action="#" id="alifzerocms_admission_portal" role="application"
+                                      class="wizard clearfix" novalidate="novalidate">
+                                    <input type="hidden" name='step_number' id='step_number' t-att-value="student.step_number or 1"/>
+                                    <input type="hidden" name='current_step' id='current_step' t-att-value="student.step"
+                                           t-if="student.step"/>
+
+                                    <t t-foreach="steps" t-as="step">
+                                        <t t-call="{{step.template.key}}">
+                                            <t t-set="step_sequence" t-value="step.sequence"/>
+                                            <t t-set="step_name" t-value="step.name"/>
+                                        </t>
+                                    </t>
+
+                                    <input type="hidden" id="student_step_status" t-att-value="student.step_number"/>
+                                    <!-- <t t-if="student.step_number >= 6">-->
+
+                                    <!--   </t>-->
+                                </form>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>
+
+	
